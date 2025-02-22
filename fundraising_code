@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-image: url('https://www.muckle-llp.com/images/2024/01/jpg/charity-hands-shutterstock_749516689-950--720.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background: #007bff;
+            padding: 15px;
+            height: 80vh;
+            box-shadow: 2px 0 5px rgba(0, 0, 2, 0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 8px;
+            margin: 3px 0;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background: #f0f0f0;
+        }
+
+        .dashboard {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .goal-section {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .goal-section h2 {
+            color: #d9534f;
+            font-size: 22px;
+        }
+
+        .goal-section p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .copy-btn {
+            background: #5bc0de;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .copy-btn:hover {
+            background: #46b8da;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebc57;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="transactions.html">Donations</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <header>
+            <h1>Welcome, <span id="userName">Warisa Anwar</span></h1>
+        </header>
+
+        <section class="goal-section">
+            <h2>Goal Achieved</h2>
+            <p>Total Donations: ₹<span id="goalAmount">30,000</span></p>
+            <p>Donors: <strong>10</strong></p>
+            
+            <div class="buttons">
+                <button class="copy-btn" onclick="copyReferral()">Copy Link</button>
+                <button class="whatsapp-btn" onclick="shareWhatsApp()">WhatsApp</button>
+            </div>
+
+            <p>Referral Code: <strong id="referralCode">pra7432</strong></p>
+        </section>
+    </main>
+
+    <script>
+        function copyReferral() {
+            const referralLink = 'https://fundraising.com/donate.html?ref=pra7432';
+            navigator.clipboard.writeText(referralLink).then(() => {
+                alert('Donation link copied!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        
+        function shareWhatsApp() {
+            const referralLink = 'https://fundraising.com/donate.html?ref=pra7432';
+            const message = `Support my fundraising: ${referralLink}`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
